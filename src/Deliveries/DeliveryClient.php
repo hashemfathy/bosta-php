@@ -34,7 +34,8 @@ class DeliveryClient
         DropOffAddress $dropOffAddress,
         Receiver $receiver,
         string $notes,
-        int $cod
+        int $cod,
+        int $businessReference
     ): \stdClass {
         try {
             $path = 'deliveries';
@@ -42,6 +43,7 @@ class DeliveryClient
             $body = new \stdClass();
             $body->type = $type;
             $body->notes = $notes;
+            $body->businessReference = $businessReference;
 
             $body->dropOffAddress = $dropOffAddress->dropOffAddress;
             $body->receiver = $receiver->receiver;
@@ -83,7 +85,7 @@ class DeliveryClient
             $path = 'deliveries/' . $deliveryId;
 
             $body = new \stdClass();
-            $body->notes = $notes;
+            $body->businessReference = $notes;
 
             $body->dropOffAddress = $dropOffAddress->dropOffAddress;
             $body->receiver = $receiver->receiver;
