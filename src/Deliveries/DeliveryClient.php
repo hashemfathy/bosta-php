@@ -35,7 +35,8 @@ class DeliveryClient
         Receiver $receiver,
         string $notes,
         int $cod,
-        int $businessReference
+        int $businessReference,
+        string $webhookUrl
     ): \stdClass {
         try {
             $path = 'deliveries';
@@ -44,6 +45,7 @@ class DeliveryClient
             $body->type = $type;
             $body->notes = $notes;
             $body->businessReference = $businessReference;
+            $body->webhookUrl = $webhookUrl;
 
             $body->dropOffAddress = $dropOffAddress->dropOffAddress;
             $body->receiver = $receiver->receiver;
