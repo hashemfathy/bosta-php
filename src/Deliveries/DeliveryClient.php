@@ -36,7 +36,8 @@ class DeliveryClient
         string $notes,
         int $cod,
         int $businessReference,
-        string $webhookUrl
+        string $webhookUrl,
+        array $productInfo = []
     ): \stdClass {
         try {
             $path = 'deliveries';
@@ -46,6 +47,7 @@ class DeliveryClient
             $body->notes = $notes;
             $body->businessReference = $businessReference;
             $body->webhookUrl = $webhookUrl;
+            $body->$productInfo = $productInfo;
 
             $body->dropOffAddress = $dropOffAddress->dropOffAddress;
             $body->receiver = $receiver->receiver;
